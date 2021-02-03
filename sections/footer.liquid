@@ -1,0 +1,148 @@
+<footer class="footer">
+  <div class="page-width">
+      <div class="footer-instagram">
+          <div id="insta-feed"></div>
+      </div>
+      <div class="footer-main">
+          <div class="bn-footer-row">
+            <div class="links_main">
+              <div class="col-xs-6 col-sm-3 col-lg-2 ">
+                  <div class="footer-widget">
+                      <h3>{{ section.settings.footer-navigation-1-title }}</h3>
+                      <ul>
+                          {% for link in linklists[section.settings.footer-navigation-1].links %}
+                              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3 col-lg-2 ">
+                  <div class="footer-widget">
+                      <h3>{{ section.settings.footer-navigation-2-title }}</h3>
+                      <ul>
+                          {% for link in linklists[section.settings.footer-navigation-2].links %}
+                              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+              </div>
+              <div class="col-xs-12 col-lg-5 newsletter_main">
+                  <div class="footer-newsletter">
+                      {% form 'customer' %}
+                      {% if form.posted_successfully? %}
+                          <p class="newsletter-success">{{ section.settings.newsletter-success | newline_to_br }}</p>
+                      {% else %}
+                          <input id="contact_tags" name="contact[tags]" type="hidden" value="prospect,newsletter" />
+                          <p>{{ section.settings.newsletter-title | newline_to_br }}</p>
+                          <div class="form-group">
+                              <input class="form-control" name="contact[email]" type="email" placeholder="YOUR EMAIL ADDRESS" required />
+                              <button type="submit" class="newsletter-submit">
+                                  <img src="{{ 'right-arrow-of-straight-thin-line.png' | asset_url }}" alt="Submit">
+                              </button>
+                          </div>
+                      {% endif %}
+                      {% endform %}
+                  </div>
+                  <div class="footer-widget">
+                      <div class="social-networks">
+                          {% if settings.social_instagram_link != blank %}
+                          <a href="{{ settings.social_instagram_link }}" title="Instagram">
+                              <i class="fab fa-instagram"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_facebook_link != blank %}
+                          <a href="{{ settings.social_facebook_link }}" title="Facebook">
+                              <i class="fab fa-facebook"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_twitter_link != blank %}
+                          <a href="{{settings.social_twitter_link }}" title="Twitter">
+                              <i class="fab fa-twitter"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_pinterest_link != blank %}
+                          <a href="{{ settings.social_pinterest_link }}" title="Pinterest">
+                              <i class="fab fa-pinterest"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_tumblr_link != blank %}
+                          <a href="{{ settings.social_tumblr_link }}" title="Linkedin">
+                              <i class="fab fa-tumblr"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_snapchat_link != blank %}
+                          <a href="{{ settings.social_snapchat_link }}" title="Linkedin">
+                              <i class="fab fa-snapchat"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_youtube_link != blank %}
+                          <a href="{{ settings.social_youtube_link }}" title="Linkedin">
+                              <i class="fab fa-youtube"></i>
+                          </a>
+                          {% endif %}
+                          {% if settings.social_vimeo_link != blank %}
+                          <a href="{{ settings.social_vimeo_link }}" title="Linkedin">
+                              <i class="fab fa-vimeo"></i>
+                          </a>
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="disclaimer">
+          {{ section.settings.disclaimer }}
+      </div>
+      <div class="copyright">
+          &copy;{{ "now" | date: "%Y" }} {{ section.settings.copyright }}
+      </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer-navigation-1-title",
+      "label": "Footer Navigation 1 Title"
+    },
+    {
+      "type": "link_list",
+      "id": "footer-navigation-1",
+      "label": "Footer Navigation 1"
+    },
+    {
+      "type": "text",
+      "id": "footer-navigation-2-title",
+      "label": "Footer Navigation 2 Title"
+    },
+    {
+      "type": "link_list",
+      "id": "footer-navigation-2",
+      "label": "Footer Navigation 2"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter-title",
+      "label": "Newsletter Title"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter-success",
+      "label": "Newsletter Success Message"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer"
+    },
+    {
+      "type": "textarea",
+      "id": "copyright",
+      "label": "Copyright"
+    }
+  ]
+}
+{% endschema %}
