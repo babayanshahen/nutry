@@ -1,0 +1,89 @@
+<div class="page-width faq_section">
+	
+	<h2 class="bn_fqSectionTitle">{{section.settings.title}} </h2>
+	<div class="FaQ_Main">
+	{%for blocks in section.blocks%}
+	<div class="FaQ_Each">
+		<div class="bn_box">
+			<div>
+		  	<span class="svg_arrow">
+		  		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="8" viewBox="0 0 15 8">
+  <image id="down-arrow" width="15" height="8" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAICAYAAAAm06XyAAAAiUlEQVQYlWMwUmN8XxnDbM1AAiiLZHY2UmP8AGboKTN+qohmNiVGO0idoSrjR5A+sEBxOHOQnjLjZ0IGgORB6soimQNQJJAMMManEaQOq8kgCWgYaCCLg/gGKowfcWqEgYJQ5iSQQpgBMI2FYcxReDWiG1ASwewLokF8ojQiGyArxvgbp0YGBgYApNkwaKC5LH8AAAAASUVORK5CYII="/>
+</svg>
+		  	</span>
+		  	</div>
+		    &nbsp;&nbsp;
+		    <div>
+		    <span>{{blocks.settings.questions}}</span>
+		    </div>
+	    </div>
+	    <div class="draw">
+	    	{{blocks.settings.answers}}
+	    </div>
+    </div>
+    {%endfor%}
+    </div>
+<div class="Button_name_url">
+	<h5>{{section.settings.btn_title}}</h5>
+  <div class="btn bn_btn">
+  	<a href="{{section.settings.btn_url}}">{{section.settings.btn_name}}</a>
+  </div>
+  </div>
+   
+</div>
+
+
+
+{% schema %}
+   {
+"name": "FAQ",
+"class":"index-section",
+"settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },
+  {
+    "type": "text",
+    "id": "btn_title",
+    "label": "Button title"
+  },
+  {
+    "type": "text",
+    "id": "btn_name",
+    "label": "Button name"
+  },
+  {
+    "type": "url",
+    "id": "btn_url",
+    "label": "Button Url"
+  }
+
+ 
+],
+"blocks": [
+  {
+  "type":"text",
+  "name":"Q/A",
+  "settings":[
+  {
+    "type": "richtext",
+    "id":"questions",
+    "label": "Question"
+  },
+  {
+    "type": "richtext",
+    "id": "answers",
+    "label": "Answers"
+  }
+]
+}],
+"presets" : [
+{
+"name" : "FAQ",
+"category" : "Call"
+}
+]
+}
+{% endschema %}

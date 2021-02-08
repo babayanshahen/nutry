@@ -1,0 +1,138 @@
+<div data-section-id="{{ section.id }}" data-section-type="about-template">
+		<div class="banner">
+			<div class="baner-bgBn" style="background-image: url({{section.settings.bnBackground | img_url: '4000x'}}); background-repeat: no-repeat; background-size: cover;">
+				<h2>{{section.settings.bgTitlte}}</h2>
+				<h4>{{section.settings.bgsubitlte}}</h4>
+			</div>
+			
+		</div>
+		
+			{% for blocks in section.blocks %}
+				{% case blocks.type %}
+			{% when 'text' %}
+			<div class="page-width ">
+			<div class="bnFlex_content bn_About_Sec">
+				<div class="Flex_item_p">
+					<div>{{blocks.settings.text_left}}</div>
+				</div>
+				<div  class="flex_item_image">
+					<div class="Absolute_img">
+					<img src="{{blocks.settings.bn_image_pick | img_url: '2000x'}}">
+					</div>
+				</div>
+
+				
+			</div>
+			
+			
+		</div>
+ {% when 'image' %}
+<div class="bnpage-width">
+<div  class=" page-width">
+	<div class="  bnFlex_content bn_About_Sec bn_About_Sec2 ">
+		<div  class="flex_item_image2">
+				
+				<img src="{{blocks.settings.bn_image_pickSecond | img_url: '2000x'}}">
+				
+			</div>
+			<div class="Flex_item_pSecond">  
+				<h2>{{blocks.settings.Flex_item_Title}}</h2>
+				<div>{{blocks.settings.Flex_item_pSecond}}</div>
+				<div class="btn bn_btn bn_btn_left">
+					<a href="{{blocks.settings.Flex_button_url}}">
+						{{blocks.settings.Flex_button_name}}
+						
+					</a>
+				</div>
+			</div>
+			
+
+			
+		</div>
+	</div>
+</div>
+{% endcase %}
+		{% endfor %}
+</div>
+{% schema %}
+   {
+"name": "About",
+"class":"index-section",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "bnBackground",
+    "label": "Image"
+  },
+  
+  {
+    "type": "text",
+    "id": "bgTitlte",
+    "label": "Title"
+  },
+  {
+    "type": "text",
+    "id": "bgsubitlte",
+    "label": "Subtitle"
+  }
+
+ 
+],
+"blocks": [
+	{
+  "type":"text",
+  "name":"Left Text and image",
+  "settings":[
+  {
+    "type": "richtext",
+    "id":"text_left",
+    "label": "Left text"
+  },
+  {
+    "type": "image_picker",
+    "id": "bn_image_pick",
+    "label": "Image"
+  }
+]
+},
+{
+  "type":"image",
+  "name":"Right Text with image",
+  "settings":[
+  {
+    "type": "image_picker",
+    "id":"bn_image_pickSecond",
+    "label": "image"
+  },
+   {
+    "type": "html",
+    "id": "Flex_item_Title",
+    "label": "Title"
+  },
+   {
+    "type": "text",
+    "id": "Flex_button_name",
+    "label": "Button name"
+  },
+  {
+    "type": "url",
+    "id": "Flex_button_url",
+    "label": "Button url"
+  },
+  {
+    "type": "richtext",
+    "id": "Flex_item_pSecond",
+    "label": "Right text"
+  }
+]
+}
+],
+
+"presets" : [
+{
+"name" : "About Page",
+"category" : "Call"
+}
+]
+}
+{% endschema %}

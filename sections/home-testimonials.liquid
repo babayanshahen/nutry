@@ -1,0 +1,72 @@
+<section class="home-testimonials">
+  <div class="page-width">
+    <div class="row-flex row-vcenter bn-flex-testimonials">
+      <div class=" bn-image-testimonials">
+       <img src="{{section.settings.testimonail_img | img_url: '800x'}}" alt="The Soap Store">
+      </div>
+      <div class=" bn-text-testimonials">
+        <h2>{{ section.settings.title | newline_to_br }}</h2>
+        <div class="owl-carousel home-testimonial-slide">
+          {% for block in section.blocks %}  
+          <div class="bn--testimonial-item">
+            <div class="testimonial-content">{{ block.settings.text | newline_to_br }}</div>
+            <p class="testimonial-name">{{ block.settings.name }}</p>
+            <p class="testimonial-stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class":"index-section",
+  "settings": [
+    {
+      "type":"image_picker",
+      "id":"testimonail_img",
+      "label":"Testimonial Image"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Testimonial",
+      "settings": [
+ 		    {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "id": "name",
+          "type": "text",
+          "label": "Name"
+        }
+      ]
+    }
+  ],
+"presets" : [
+{
+  "name" : "Testimonials",
+  "category" : "Call"
+ 
+  }
+]
+}
+{% endschema %} 
+
